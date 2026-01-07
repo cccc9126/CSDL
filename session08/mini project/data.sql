@@ -74,6 +74,9 @@ from  guests  g
 join bookings b on g.guest_id=b.guest_id
 group by g.guest_id;
 
+select b.booking_id,(b.check_out - b.check_in) * r.price_per_day as 'doanh_thu'
+from bookings b
+join rooms r on b.room_id = r.room_id;
 select r.room_type, sum(((check_out-check_in)*price_per_day))`Tổng doanh thu` 
 from rooms r
 join  bookings b on r.room_id=b.room_id
