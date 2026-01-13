@@ -168,9 +168,7 @@ select * from View_IT_Enrollment_DB;
 
 
 delimiter //
-create procedure UpdateScore_IT_DB (
-  in p_StudentID char(6),
-  inout p_NewScore float)
+create procedure UpdateScore_IT_DB (in p_StudentID char(6), inout p_NewScore float)
 begin
   if p_NewScore > 10 then
     set p_NewScore = 10;
