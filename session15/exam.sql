@@ -185,7 +185,11 @@ start transaction;
 select score into @current from Grades where StudentID =p_StudentID;
 insert into GradeLog(StudentID,OldScore,NewScore)
 value(p_StudentID,@current,null);
-
+delete from Grades where StudentID=p_StudentID;
+if(row_count()=0) then
+	rollback;
+else commit;
+end if;
 end //
 delimiter ;
 
